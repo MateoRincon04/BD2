@@ -25,13 +25,11 @@ BEGIN
                     DBMS_OUTPUT.PUT_LINE(aux);
                     aux := arr(i+1).nombre;
                 END IF;
-            END IF;
 
-            IF i = arr.LAST THEN --IMPRIMIR EL ULTIMO DEPTO
+	        ELSE --IMPRIMIR EL ULTIMO DEPTO
                 DBMS_OUTPUT.PUT_LINE(arr(i).depto);
                 DBMS_OUTPUT.PUT_LINE(aux);
             END IF;
-
         END IF;
         
     END LOOP;

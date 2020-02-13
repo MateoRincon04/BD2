@@ -15,16 +15,16 @@ tipo NUMBER(8) NOT NULL CHECK(tipo >= 0),
 salario NUMBER(20) NOT NULL CHECK(salario >= 0)
 );
 
-CREATE OR REPLACE TRIGGER con_emp
+CREATE OR REPLACE TRIGGER si
 BEFORE INSERT ON emp
 FOR EACH ROW
 DECLARE
-    val_cta valortipo.valor%TYPE;
+numeroaux valortipo.valor%TYPE;
 BEGIN
-  SELECT valor
-    INTO val_cta
-    FROM valortipo
-   WHERE tipo := :NEW.tipo;
-   :NEW.salario := :NEW.salario + val_cta;
+    SELECT valor INTO numeroaux FROM valortipo WHERE tipo = :NEW.tipo;
+    :NEW.salario := :NEW.salario + numeroaux;
 END;
 /
+
+
+INSERT INTO emp VALUES(100, 3, 5000);
